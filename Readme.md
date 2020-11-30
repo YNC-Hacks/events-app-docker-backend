@@ -1,33 +1,15 @@
-<!-- # Docker Specific - To initialise Postgres Container
-
-1. Build Image
+# Using this Backend 
+1. Use Makefile
 ```
-docker build -t postgres-db
-```
-
-2. Start Container using Image
-```
-docker run -d --name postgres-db -p 5555:5432 postgres-db
-``` -->
-
-# Running Containers
-
-1. Compose the container
-```
-docker-compose build
+Make Build
 ```
 
-2. Fire Up Container
+NOTE:
+ If you would like to wipe and reinstall the images use
 ```
-docker-compose up -d
+Make purge
 ```
-
-# Maintanence
-1. Removing all containers and images
-
+If you simply want to stop and remove all existing containers, use
 ```
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
-docker rmi $(docker images -a -q)
+Make remove
 ```
-

@@ -3,16 +3,19 @@ version: '3.7'
 services:
   web:
     build: ./server/
-    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - ./backups:/fastapi
     ports:
       - "8000:8000"
     depends_on:
       - db
+    
+    
   db:
     build: ./database
     environment:
+      POSTGRES_DB: ynchacks
       POSTGRES_USER: ynchacks
       POSTGRES_PASSWORD: password
     expose:
@@ -30,9 +33,10 @@ services:
   #     - PGADMIN_DEFAULT_EMAIL=ynchacks@yalenus.com
   #     - PGADMIN_DEFAULT_PASSWORD=password
   #   ports:
-  #     - "6000"
+  #     - "6000:6000"
   #   depends_on:
   #     - db
+  #   command: -p 6000
 
 volumes:
   postgres_data:
