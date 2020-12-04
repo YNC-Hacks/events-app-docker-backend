@@ -57,17 +57,6 @@ def check_user_email(email:str):
     return db.session.query(ModelUser.user_email).filter_by(user_email=email).scalar() is not None
 
 
-# @app.post('/user/',response_model = SchemaUser)
-# def create_user(user:SchemaUser):
-#     db_user = ModelUser(
-#         user_email = 'tiago@fastapi.com',
-#         verified = True,
-#         name = 'Tiago'
-#     )
-#     db.session.add(db_user)
-#     db.session.commit()
-#     return db_user
-#---------------------------------------------------#
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
