@@ -13,5 +13,6 @@ EXPOSE 8000
 
 #Copy Files
 COPY . /app
+COPY ./alembic
 
 RUN alembic revision --autogenerate -m "First migration"
